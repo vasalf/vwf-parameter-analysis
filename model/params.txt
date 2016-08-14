@@ -1,0 +1,20 @@
+0.002                   // dt
+2500000                 // ns
+1000                    // nfac
+40                      // N
+427.8 (=1.38 * 310)     // kT
+5                       // R
+2.0                     // uvdw
+300                     // uspr
+5.5                     // alpha
+0000                    // srat
+300                     // erat
+1                       // nu
+1e-7                    // pu
+0.54e-4                 // pf
+5                       // dd
+1000                    // f0u
+1.54e6                  // f0f
+outp_x.txt              //x_file
+outp_1_20.txt           //v_file
+outp_srate_20.txt       //srate_file

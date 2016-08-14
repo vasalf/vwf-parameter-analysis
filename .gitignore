@@ -27,3 +27,9 @@
 *.exe
 *.out
 *.app
+model/vWFnew
+run-genetics
+
+# Vim
+*.swp
+*.swo

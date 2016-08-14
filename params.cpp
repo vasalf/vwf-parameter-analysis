@@ -30,7 +30,7 @@ parameters get_parameters_structure(std::vector<int> v) {
 
     
     params.dt = 0.002;
-    params.ns = 2500000;
+    params.ns = 5000000;
     params.nfac = 1000;
     params.N = n;
     params.kT = 1.38 * 310;
@@ -44,8 +44,8 @@ parameters get_parameters_structure(std::vector<int> v) {
     params.nu = 1;
     params.gamma = 6 * M_PI * params.nu * params.R;
     params.D = params.kT / params.gamma;
-    params.pu = pu;
-    params.pf = pf;
+    params.pu = pu * 1e-4;
+    params.pf = pf * 1e-4;
     params.dd = 5;
     params.f0u = f0u;
     params.f0f = f0f;
@@ -59,9 +59,9 @@ parameters get_parameters_structure(std::vector<int> v) {
     std::sprintf(buf, format, __VA_ARGS__); \
     a = buf;
 
-    SUBST_NAME(params.x_file, "outp_x_%d.txt", z);
-    SUBST_NAME(params.v_file, "outp_1_%d.txt", z);
-    SUBST_NAME(params.srate_file, "outp_srate_%d.txt", z);
+    SUBST_NAME(params.x_file, "res/outp_x_%d.txt", z);
+    SUBST_NAME(params.v_file, "res/outp_1_%d.txt", z);
+    SUBST_NAME(params.srate_file, "res/outp_srate_%d.txt", z);
 
     return params;
 }

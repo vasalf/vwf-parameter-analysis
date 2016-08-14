@@ -7,7 +7,7 @@
 
 class force {
   public:
-    virtual std::vector<vect> get_velocity_increment(const parameters& params, const std::vector<vect>& position) {
+    virtual std::vector<vect> get_velocity_increment(__attribute__((unused)) const parameters& params, __attribute__((unused)) const std::vector<vect>& position) {
         return std::vector<vect>();
     }
 };

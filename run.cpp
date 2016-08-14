@@ -34,7 +34,7 @@ std::vector<double> run_holder::run_once(std::vector<int> params) {
     model.params = get_parameters_structure(params);
 
     std::stringstream position_filename;
-    position_filename << "initial_coords_" << model.params.N << ".txt";
+    position_filename << "res/initial_coords_" << model.params.N << ".txt";
     model.read_positions(position_filename.str());
 
     model.forces.emplace_back(new spheres_interaction_force_unfold(model.params.N, rd(), model.pair_forces));

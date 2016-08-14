@@ -1,3 +1,6 @@
+#ifndef HYDRO_H_
+#define HYDRO_H_
+
 #include <vector>
 #include <string>
 #include "vect.h"
@@ -23,3 +26,5 @@ class hydro_vessel: public force {
     hydro_vessel(vect & mc, std::string xs_filename, std::string srat_filename, std::string erat_filename);
     std::vector<vect> get_velocity_increment(const parameters& params, const std::vector<vect>& position);
 };
+
+#endif //HYDRO_H_

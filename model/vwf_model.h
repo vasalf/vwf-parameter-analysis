@@ -7,9 +7,9 @@
 #include "force.h"
 
 class vwf_model {
-    std::vector<vect> position;
     void recalc_mass_center();
   public:
+    std::vector<vect> position;
     std::vector<double> pair_forces;
     parameters params;
     vect mass_center;

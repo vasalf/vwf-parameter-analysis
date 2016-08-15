@@ -94,6 +94,35 @@ std::vector<run_results> genetics::threaded_run(std::vector<genetics::individual
     return values;
 }
 
+static void print_individual(std::ofstream& f, genetics::individual& ind, run_results& r) {
+    for (int j = 0; j < NPARAM; j++)
+        f << ind.vec[j] << " ";
+    f << r.rating() << std::endl;
+    f << r.stats.size() << std::endl;
+    for (int j = 0; j < (int)r.stats.size(); j++) {
+        f << r.stats[j] << " ";
+    }
+    f << std::endl;    
+}
+
+static void write_generation_to_file(int g, std::vector<genetics::individual> &population, std::vector<run_results> vals) {
+    char sfile[100];
+    std::sprintf(sfile, "result/generation-%06d", g);
+    
+    std::ofstream f;
+    f.open(sfile);
+
+    for (int i = 0; i < (int)population.size(); i++) {
+        print_individual(f, population[i], vals[i]);
+    }
+
+    f.close();
+
+    f.open("result/cur_generation");
+    f << g << std::endl;
+    f.close();
+}
+
 void genetics::execute() {
     std::vector<individual> population(population_size);
     for (int i = 0; i < population_size; i++) {
@@ -102,6 +131,7 @@ void genetics::execute() {
             population[i].vec[j] = parameter_dists[j](rnd); 
         }
     }
+    double cur_global_min = 1791791791;
     for (int generation = 1; ;generation++) {
         std::vector<run_results> vals = threaded_run(population);
         
@@ -111,6 +141,15 @@ void genetics::execute() {
             mn = std::min(mn, vals[i].rating());
         std::cout << "best: " << mn << std::endl;
         std::cout << std::endl;
+
+        write_generation_to_file(generation, population, vals);
+        for (int i = 0; i < population_size; i++)
+            if (cur_global_min > vals[i].rating()) {
+                cur_global_min = vals[i].rating();
+                std::ofstream f("result/best");
+                print_individual(f, population[i], vals[i]);
+                f.close();
+            }
 
         std::vector<int> indices(population_size);
         for (int i = 0; i < population_size; i++)

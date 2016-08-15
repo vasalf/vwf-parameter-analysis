@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-Wall -Wextra -Wshadow -std=c++11 -g -D_GLIBCXX_DEBUG
+CXXFLAGS=-Wall -Wextra -Wshadow -std=c++11 -O2
 
 SRCS=main.cpp run.cpp params.cpp genetics.cpp
 OBJS=$(subst cpp,o,$(SRCS)) 

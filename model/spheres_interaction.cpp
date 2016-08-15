@@ -104,22 +104,22 @@ std::vector<vect> spheres_interaction_force_unfold::get_velocity_increment(const
                 
                 if (!is_unfolded[2 * i + 1]) {
                     new_is_unfolded[2 * i + 1] = gen_event(params.pu * params.dt * std::exp(fpr.length() / params.f0u));
-                    if (new_is_unfolded[2 * i + 1]) {
+/*                    if (new_is_unfolded[2 * i + 1]) {
                         std::cerr << "unfold " << fpr.length() << std::endl;
                     }
-                    new_is_unfolded[2 * j] = gen_event(params.pu * params.dt * std::exp(fpr.length() / params.f0u));
-                    if (new_is_unfolded[2 * j]) {
+*/                    new_is_unfolded[2 * j] = gen_event(params.pu * params.dt * std::exp(fpr.length() / params.f0u));
+/*                    if (new_is_unfolded[2 * j]) {
                         std::cerr << "unfold " << fpr.length() << std::endl;
                     }
-                } else {
+*/                } else {
                     new_is_unfolded[2 * i + 1] = gen_event(1 - params.pf * params.dt * std::exp(-std::pow(fpr.length(), 2) / params.f0f));
-                    if (!new_is_unfolded[2 * i + 1]) {
+/*                    if (!new_is_unfolded[2 * i + 1]) {
                         std::cerr << "refold " << fpr.length() << std::endl;
                     }
-                    new_is_unfolded[2 * j] = gen_event(1 - params.pf * params.dt * std::exp(-std::pow(fpr.length(), 2) / params.f0f));
-                    if (!new_is_unfolded[2 * j])
+*/                    new_is_unfolded[2 * j] = gen_event(1 - params.pf * params.dt * std::exp(-std::pow(fpr.length(), 2) / params.f0f));
+/*                    if (!new_is_unfolded[2 * j])
                         std::cerr << "refold " << fpr.length() << std::endl;
-                }
+*/                }
 
             } else if (params.d < l && l < 2 * params.d) {
                 double cur_d = params.d;

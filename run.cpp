@@ -9,6 +9,7 @@
 #include <sstream>
 #include <random>
 #include <algorithm>
+#include <iostream>
 
 run_results::run_results(std::vector<double> res) {
     stats = res;

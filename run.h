@@ -11,8 +11,8 @@
 #include <random>
 
 class run_results {
-    std::vector<double> stats;
   public:
+    std::vector<double> stats;
     run_results(std::vector<double> res);
     double rating() const;
 };

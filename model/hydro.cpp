@@ -23,7 +23,7 @@ std::vector<vect> hydro::get_velocity_increment(const parameters& params, const 
 }
 
 hydro_vessel::hydro_vessel(vect & mc, std::string xs_filename, std::string srat_filename, std::string erat_filename) : mass_center(mc) {
-    std::cout << xs_filename << std::endl; 
+//    std::cout << xs_filename << std::endl; 
     std::ifstream xfile;
     xfile.open(xs_filename);
     assert(xfile.is_open());

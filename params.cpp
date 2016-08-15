@@ -30,8 +30,8 @@ parameters get_parameters_structure(std::vector<int> v) {
 
     
     params.dt = 0.002;
-    params.ns = 5000000;
     params.nfac = 1000;
+    params.ns = 5000000;
     params.N = n;
     params.kT = 1.38 * 310;
     params.R = 5;

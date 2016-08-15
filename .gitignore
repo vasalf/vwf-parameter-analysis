@@ -29,6 +29,7 @@
 *.app
 model/vWFnew
 run-genetics
+test_cpu_fork
 
 # Vim
 *.swp

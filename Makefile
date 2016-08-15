@@ -1,7 +1,7 @@
 CXX=g++
-CXXFLAGS=-Wall -Wextra -Wshadow -std=c++11 -O2
+CXXFLAGS=-Wall -Wextra -Wshadow -std=c++11 -g -D_GLIBCXX_DEBUG
 
-SRCS=main.cpp run.cpp params.cpp
+SRCS=main.cpp run.cpp params.cpp genetics.cpp
 OBJS=$(subst cpp,o,$(SRCS)) 
 MODEL_OBJS=model/hydro.o model/spheres_interaction.o model/random_force.o model/vect.o model/vwf_model.o model/params.o
 HEADERS=$(wildcard *.h)

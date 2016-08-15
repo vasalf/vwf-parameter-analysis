@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
     std::ofstream outf(date + "_coords.txt");
     std::ofstream outforces(date + "_forces.txt");
 
-    model.read_positions("initial_coords_40.txt");
+    model.read_positions("../res/initial_coords_40.txt");
     model.forces.emplace_back(new spheres_interaction_force_unfold(params.N, std::time(0), model.pair_forces));
     model.forces.emplace_back(new hydro_vessel(model.mass_center, params.x_file, params.srate_file, params.v_file));
     model.forces.emplace_back(new random_force(std::time(0)));

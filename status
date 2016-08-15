@@ -1,0 +1,68 @@
+#!/usr/bin/python3
+
+import os
+
+result_path = "./result/"
+
+def get_current_generation():
+    f = open(result_path + "cur_generation", "r")
+    g = int(f.read().rstrip())
+    f.close()
+    return g
+
+
+def get_best_result():
+    f = open(result_path + "best", "r")
+    bestd = list(f.readline().rstrip().split())
+    best = list(map(int, bestd[:-1]))
+    res = float(bestd[-1])
+    return best, res
+
+
+def plot_best_result():
+    f = open(result_path + "best", "r")
+    f.readline()
+    f.readline()
+    arr = f.readline().split()
+    f.close()
+
+    f = open(result_path + "best.dat", "w")
+    f.write("\n".join(arr))
+    f.close()
+    
+    os.system("gnuplot plot.gp")
+
+    return '<img src="/plot.png" />'
+
+
+def params(v):
+    if v[0] == 0:
+        z = 10
+    elif v[0] == 1:
+        z = 20
+    else:
+        z = 50
+
+    n = 40
+    uspr = 50 * (v[2] + 1)
+    uvdw = 1 + 0.5 * v[3]
+    f0u = 1000 + 250 * v[4]
+    pu = 1e-3 + 3e-3 * v[5]
+    f0f = 1e6 + 5e5 * v[6]
+    pf = 0.1 + 0.225 * v[7]
+
+    return 'z = ' + str(z) + '; n = ' + str(n) + '; uspr = ' + str(uspr) + '; uvdw = ' + str(uvdw) + '; f0u = ' + str(f0u) + '; pu = ' + str(pu) + '; f0f = ' + str(f0f) + '; pf = ' + str(pf)
+
+print("Content-Type: text/html")
+print()
+
+print("<html><head><title>Current status</title></head><body>")
+
+print("<p>", "Current generation:", get_current_generation(), "</p>")
+best, res = get_best_result()
+print("<p>", "Best result:", res, "</p>")
+print("<p>", "Best individual:", best, "</p>")
+print("<p>", "Best params:", params(best), "</p>")
+print("<p>", plot_best_result(), "</p>")
+
+print("</body></html>")
